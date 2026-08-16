@@ -461,6 +461,7 @@ main {
   display: flex;
   width: max-content;
   animation: tape 28s linear infinite;
+  will-change: transform;
   font-family: var(--font-mono);
   font-size: 0.78rem;
   letter-spacing: 0.18em;
@@ -469,12 +470,16 @@ main {
   padding: 0.7rem 0;
 }
 
-.marquee__track span { padding-right: 2rem; }
+.marquee__track span {
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding-right: 2rem;
+}
 .marquee:hover .marquee__track { animation-play-state: paused; }
 
 @keyframes tape {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
 }
 
 .cheese-rule {
