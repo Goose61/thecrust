@@ -104,3 +104,43 @@ const slash = document.querySelector(".slash");
 if (slash) {
   slash.addEventListener("animationend", () => slash.remove());
 }
+
+function setupMarquee() {
+  const marquee = document.querySelector(".marquee");
+  const track = marquee?.querySelector(".marquee__track");
+  if (!marquee || !track) return;
+
+  const seed = track.querySelector("span");
+  if (!seed) return;
+
+  const phrase = seed.dataset.phrase || seed.textContent;
+  seed.dataset.phrase = phrase;
+
+  const minSegmentWidth = marquee.clientWidth + 48;
+  const fillSpan = (span) => {
+    span.textContent = phrase;
+    while (span.scrollWidth < minSegmentWidth) {
+      span.textContent += phrase;
+    }
+  };
+
+  fillSpan(seed);
+
+  let clone = seed.nextElementSibling;
+  if (!clone || clone.tagName !== "SPAN") {
+    clone = seed.cloneNode(true);
+    clone.dataset.phrase = phrase;
+    track.appendChild(clone);
+  }
+  fillSpan(clone);
+
+  [...track.querySelectorAll("span")].slice(2).forEach((span) => span.remove());
+}
+
+if (!reduceMotion) {
+  setupMarquee();
+  window.addEventListener("resize", () => {
+    window.clearTimeout(setupMarquee._timer);
+    setupMarquee._timer = window.setTimeout(setupMarquee, 150);
+  });
+}
