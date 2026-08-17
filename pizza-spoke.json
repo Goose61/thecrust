@@ -1,0 +1,19 @@
+{
+  "name": "Pizza",
+  "symbol": "PIZZA",
+  "description": "Official $PIZZA on Robinhood Chain, mirrored 1:1 from Solana via our new expermimental technology.",
+  "image": "https://raw.githubusercontent.com/Goose61/thecrust/refs/heads/main/pizza_logo.jpg",
+  "external_link": "https://thecrust.io",
+  "external_url": "https://thecrust.io",
+  "twitter": "https://x.com/Pizza_on__Sol",
+  "attributes": [
+    {
+      "trait_type": "home_chain",
+      "value": "Solana"
+    },
+    {
+      "trait_type": "home_mint",
+      "value": "4AkCN6KLeCmUDjWLg4XyQpuZuWtwBdPcbtBQjsA2pump"
+    }
+  ]
+}
